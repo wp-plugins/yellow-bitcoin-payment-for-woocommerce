@@ -1,7 +1,7 @@
-=== Wordpress WooCommerce Yellow Plugin ===
+=== Bitcoin Payments by Yellow (for woocommerce) ===
 
-Contributors: Yellow
-Tags: wordprss, woocommerce, yellow, yellowpay, bitcoin, payment
+Contributors: YellowPay, mahmoud200m, piechota
+Tags: woocommerce, yellow, yellowpay, bitcoin, payment
 Stable tag: 1.0.0
 Requires at least: 4.0
 Tested up to: 4.2.2
