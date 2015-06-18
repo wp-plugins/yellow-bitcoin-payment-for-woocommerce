@@ -403,9 +403,8 @@ function woocommerce_yellow_init()
                 "Selected plugins <strong>activated</strong>." 
             );
 
-            $settings_link = '<a href="'.get_bloginfo('wpurl').'/wp-admin/admin.php?page=wc-settings&tab=checkout&section=wc_gateway_yellow">here</a>';
-            $new = 'Connect your site to your Yellow account to start accepting Bitcoin payments set your settings from '.$settings_link;
-
+            $settings_link = '<a href="'.get_bloginfo('wpurl').'/wp-admin/admin.php?page=wc-settings&tab=checkout&section=wc_gateway_yellow">settings page</a>';
+            $new = 'To start accepting Bitcoin payments, visit the '.$settings_link.' to connect your site to your Yellow account';
             if ( in_array( $untranslated_text, $old, true ) )
                 $translated_text = substr($untranslated_text, 0, -1).', '.$new;
 
