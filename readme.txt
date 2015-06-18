@@ -1,6 +1,6 @@
 === Bitcoin Payments by Yellow (for woocommerce) ===
 
-Contributors: yellowpay, mahmoud200m, piechota
+Contributors: yellowpay, Mahmoud200m, piechota
 Tags: woocommerce, yellow, yellowpay, bitcoin, payment
 Stable tag: 1.0.0
 Requires at least: 4.0
