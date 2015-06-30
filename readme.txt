@@ -2,7 +2,7 @@
 
 Contributors: yellowpay, Mahmoud200m, piechota
 Tags: woocommerce, yellow, yellowpay, bitcoin, payment
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 Requires at least: 4.0
 Tested up to: 4.2.2
 
@@ -18,5 +18,7 @@ This is a Wordpress WooCommerce Yellow plugin, This plugin allows you to add bit
 
 == Changelog ==
 
+= 1.0.1 =
+* Edit error message
 = 1.0.0 =
 * Initial Release
