@@ -167,30 +167,30 @@ function woocommerce_yellow_init()
                     $invoice = $yellow->createInvoice( $payload );
                     $this->log('Invoice created with payload: '.json_encode($payload).', response: '.json_encode($invoice));
 
-                    if (false === isset($invoice) || true === empty($invoice)) {
+                    if (false === isset($invoice) || true === empty($invoice) || true === is_object($invoice)) {
                         throw new \Exception('The Yellow payment plugin was called to process a payment but could not instantiate an invoice object. Cannot continue!');
                     }
+                    
+                    if( $order->get_status() != "failed" ){ //new order
+                        $order->add_order_note(__('Order created with Yellow invoice of ID: '.$invoice["id"], 'yellow'));
+                        // Reduce stock levels
+                        $order->reduce_order_stock();
+                        // Remove cart
+                        WC()->cart->empty_cart();
+                    }else{  //failed order with new invoice
+                        $order->add_order_note(__('New Yellow invoice created of ID: '.$invoice["id"], 'yellow'));
+                        $order->update_status('pending');
+                    }
+
+                    $_SESSION[$order_invoice_url_variable] = $invoice["url"];
                 } catch (\Exception $e) {
                     error_log($e->getMessage());
 
                     return array(
                         'result'    => 'success',
-                        'messages'  => 'Sorry, but Bitcoin checkout with Yellow does not appear to be working.'
+                        'messages'  => "We're sorry, an error has occurred while completing your request. Please resubmit the shopping cart and try again. If the error persists, please send us an email at <a href='mailto:support@yellowpay.co' target='_blank'>support@yellowpay.co</a>"
                     );
                 }
-
-                if( $order->get_status() != "failed" ){ //new order
-                    $order->add_order_note(__('Order created with Yellow invoice of ID: '.$invoice["id"], 'yellow'));
-                    // Reduce stock levels
-                    $order->reduce_order_stock();
-                    // Remove cart
-                    WC()->cart->empty_cart();
-                }else{  //failed order with new invoice
-                    $order->add_order_note(__('New Yellow invoice created of ID: '.$invoice["id"], 'yellow'));
-                    $order->update_status('pending');
-                }
-
-                $_SESSION[$order_invoice_url_variable] = $invoice["url"];
             }
 
             // Redirect the customer to the Yellow invoice
