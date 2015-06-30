@@ -6,7 +6,7 @@
     Author:      Yellow
     Author URI:  https://yellowpay.co
 
-    Version:           1.0.0
+    Version:           1.0.1
     License:           Copyright 2015 Yellow Inc., MIT License
     GitHub Plugin URI: https://github.com/YellowPay/yellow-wordpress
  */
